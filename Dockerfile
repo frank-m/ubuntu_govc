@@ -10,10 +10,9 @@ RUN curl -L $(curl -s https://api.github.com/repos/vmware/govmomi/releases/lates
     chmod +x /usr/local/bin/govc
 
 # Install Terraform for managing Infrastructure as code
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-RUN sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-RUN sudo apt install terraform -y
-
+RUN curl -L https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip | gunzip > /usr/local/bin/terraform && \
+    chmod +x /usr/local/bin/terraform
+    
 # Install Chef workstation for chef management
 RUN wget -O chef-workstation_21.2.259-1_amd64.deb https://packages.chef.io/files/stable/chef-workstation/21.2.259/ubuntu/20.04/chef-workstation_21.2.259-1_amd64.deb
 RUN dpkg -i chef-workstation_21.2.259-1_amd64.deb
