@@ -14,7 +14,7 @@ RUN curl -L https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_lin
     chmod +x /usr/local/bin/terraform
     
 # Install Chef workstation for chef management
-RUN wget -O chef-workstation_21.2.259-1_amd64.deb https://packages.chef.io/files/stable/chef-workstation/21.2.259/ubuntu/20.04/chef-workstation_21.2.259-1_amd64.deb
+RUN curl --output chef-workstation_21.2.259-1_amd64.deb https://packages.chef.io/files/stable/chef-workstation/21.2.259/ubuntu/20.04/chef-workstation_21.2.259-1_amd64.deb
 RUN dpkg -i chef-workstation_21.2.259-1_amd64.deb
 ENV PATH="/opt/chef-workstation/embedded/bin:${PATH}"
 
